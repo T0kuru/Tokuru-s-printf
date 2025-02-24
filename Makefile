@@ -6,11 +6,11 @@
 #    By: lzabolot <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/24 18:30:08 by lzabolot          #+#    #+#              #
-#    Updated: 2025/02/24 20:04:22 by lzabolot         ###   ########.fr        #
+#    Updated: 2025/02/24 22:16:05 by lzabolot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = *.c
+SRCS = ft_printf.c ft_printf_sub1.c
 #SRCB = *.c
 #OBJSB = ${SRCB:.c=.o}
 OBJS = ${SRCS:.c=.o}

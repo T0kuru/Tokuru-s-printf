@@ -6,11 +6,11 @@
 /*   By: lzabolot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 19:53:13 by lzabolot          #+#    #+#             */
-/*   Updated: 2025/02/24 21:37:29 by lzabolot         ###   ########.fr       */
+/*   Updated: 2025/02/24 22:29:53 by lzabolot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf_header.h"
+#include "ft_printf.h"
 
 int	ft_printf_char(char x)
 {
