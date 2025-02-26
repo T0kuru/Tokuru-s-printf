@@ -6,7 +6,7 @@
 /*   By: lzabolot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:29:08 by lzabolot          #+#    #+#             */
-/*   Updated: 2025/02/26 19:14:23 by lzabolot         ###   ########.fr       */
+/*   Updated: 2025/02/26 21:28:11 by lzabolot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int	ft_parse_specificator(va_list args, char spec)
 //		i += ft_printf_hexdec_pointer(va_arg(args, void *));
 	else if (spec == 'd' || spec == 'i')
 		i += ft_dec_number(va_arg(args, int));
-//	else if (spec == 'u')
-//		i += ft_printf_uns_int(va_arg(*args, unsigned int));
+	else if (spec == 'u')
+	i += ft_printf_uns_int(va_arg(args, unsigned int));
 //	else if (spec == 'x')
 //		i += ft_printf_hexdec_num_lower(va_arg(args, unsigned int));
 //	else if (spec == 'X')

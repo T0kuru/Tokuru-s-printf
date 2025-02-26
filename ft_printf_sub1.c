@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lzabolot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/26 19:01:55 by lzabolot          #+#    #+#             */
-/*   Updated: 2025/02/26 19:43:16 by lzabolot         ###   ########.fr       */
+/*   Created: 2025/02/26 21:27:11 by lzabolot          #+#    #+#             */
+/*   Updated: 2025/02/26 21:51:45 by lzabolot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,16 @@ int	ft_printf_string(char *str)
 	i = 0;
 	while (str[i])
 		write(1, &str[i++], 1);
+	return (i);
+}
+
+int	ft_printf_uns_int(unsigned int n)
+{
+	int	i;
+	
+	i = 0;
+	if (n > 9)
+		i += ft_printf_uns_int(n / 10);
+	i += ft_printf_char('0' + n % 10);	
 	return (i);
 }

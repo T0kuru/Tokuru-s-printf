@@ -6,7 +6,7 @@
 /*   By: lzabolot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:29:08 by lzabolot          #+#    #+#             */
-/*   Updated: 2025/02/26 19:25:34 by lzabolot         ###   ########.fr       */
+/*   Updated: 2025/02/26 20:28:37 by lzabolot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_char(char *result, unsigned int nbr, long int len)
 	return (result);
 }
 
-long int	ft_len(int n)
+int	ft_len(int n)
 {
 	int	len;
 
@@ -71,6 +71,8 @@ int	ft_dec_number(int n)
 	char	*num;
 
 	num = ft_itoa(n);
+	if (!num)
+		return (0);
 	count = ft_printf_string(num);
 	free(num);
 	return (count);
