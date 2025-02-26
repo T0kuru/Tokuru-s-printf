@@ -6,7 +6,7 @@
 /*   By: lzabolot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:29:08 by lzabolot          #+#    #+#             */
-/*   Updated: 2025/02/24 22:29:39 by lzabolot         ###   ########.fr       */
+/*   Updated: 2025/02/26 19:14:23 by lzabolot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,13 @@ int	ft_printf(const char *smth, ...)
 	va_start(args, smth);
 	while (smth[i])
 	{
-		if (smth[i] == '%' && smth[i+1] != '%')
+		if (smth[i] == '%')
 		{
 			i++;
 			count += ft_parse_specificator(args, smth[i]);
 		}
 		else
-		{	
-			write (1, &smth[i], 1);
-			count++;
-		}
+			count += ft_printf_char(smth[i]);
 		i++;
 	}
 	va_end(args);
@@ -44,9 +41,7 @@ int	ft_parse_specificator(va_list args, char spec)
 	int	i;
 
 	i = 0;
-	if (args)
-		return (i);
-	else if (spec == '%')
+	if (spec == '%')
 		i += ft_printf_char('%');
 	else if (spec == 'c')
 		i += ft_printf_char(va_arg(args, int));
@@ -55,9 +50,9 @@ int	ft_parse_specificator(va_list args, char spec)
 //	else if (spec == 'p')
 //		i += ft_printf_hexdec_pointer(va_arg(args, void *));
 	else if (spec == 'd' || spec == 'i')
-		i += ft_printf_dec_number(va_arg(args, int), 0);
+		i += ft_dec_number(va_arg(args, int));
 //	else if (spec == 'u')
-//		i += ft_printf_uns_int(va_arg(args, unsigned int));
+//		i += ft_printf_uns_int(va_arg(*args, unsigned int));
 //	else if (spec == 'x')
 //		i += ft_printf_hexdec_num_lower(va_arg(args, unsigned int));
 //	else if (spec == 'X')
