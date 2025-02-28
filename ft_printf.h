@@ -6,7 +6,7 @@
 /*   By: lzabolot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 18:30:30 by lzabolot          #+#    #+#             */
-/*   Updated: 2025/02/28 19:16:52 by lzabolot         ###   ########.fr       */
+/*   Updated: 2025/02/28 22:37:31 by lzabolot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		ft_printf_hexdec_pointer(uintptr_t ptr);
 int		ft_dec_number(int n);
 int		ft_printf_count(char x, int *count);
 int		ft_printf_uns_int(unsigned int n);
-int		ft_printf_hexdec_num(unsigned int i, int flag);
+int		ft_printf_hexdec_num(unsigned int n, char	*hex_digits);
 //char	*ft_itoa_hex(unsigned int i, int flag);
 
 #endif

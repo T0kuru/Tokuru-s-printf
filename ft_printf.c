@@ -6,7 +6,7 @@
 /*   By: lzabolot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:29:08 by lzabolot          #+#    #+#             */
-/*   Updated: 2025/02/28 21:58:53 by lzabolot         ###   ########.fr       */
+/*   Updated: 2025/02/28 22:50:14 by lzabolot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,10 @@ int	ft_parse_specificator(va_list args, char spec)
 	else if (spec == 'u')
 	i += ft_printf_uns_int(va_arg(args, unsigned int));
 	else if (spec == 'x')
-		i += ft_printf_hexdec_num(va_arg(args, unsigned int), 0);
+		i += ft_printf_hexdec_num(va_arg(args, unsigned int),
+				"0123456789abcdef");
 	else if (spec == 'X')
-		i += ft_printf_hexdec_num(va_arg(args, unsigned int), 1);
+		i += ft_printf_hexdec_num(va_arg(args, unsigned int),
+				"0123456789ABCDEF");
 	return (i);
 }
