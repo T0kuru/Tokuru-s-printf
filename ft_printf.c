@@ -6,7 +6,7 @@
 /*   By: lzabolot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:29:08 by lzabolot          #+#    #+#             */
-/*   Updated: 2025/02/28 22:50:14 by lzabolot         ###   ########.fr       */
+/*   Updated: 2025/02/28 23:10:39 by lzabolot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,21 @@ int	ft_printf(const char *smth, ...)
 {
 	va_list	args;
 	int		count;
+
+	va_start(args, smth);
+	count = ft_printf_next(args, smth);
+	va_end(args);
+	return (count);
+}
+
+int	ft_printf_next(va_list args, const char *smth)
+{
+	int		count;
 	int		i;
 	int		temp;
 
 	count = 0;
 	i = 0;
-	va_start(args, smth);
 	while (smth[i])
 	{
 		if (smth[i] == '%')
@@ -39,7 +48,6 @@ int	ft_printf(const char *smth, ...)
 		}
 		i++;
 	}
-	va_end(args);
 	return (count);
 }
 
