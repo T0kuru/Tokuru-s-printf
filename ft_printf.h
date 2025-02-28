@@ -6,7 +6,7 @@
 /*   By: lzabolot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 18:30:30 by lzabolot          #+#    #+#             */
-/*   Updated: 2025/02/26 22:14:28 by lzabolot         ###   ########.fr       */
+/*   Updated: 2025/02/28 19:16:52 by lzabolot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int		ft_printf_string(char *str);
 char	*ft_char(char *result, unsigned int nbr, long int len);
 int		ft_len(int n);
 char	*ft_itoa(int n);
-int		ft_printf_hexdec_pointer(void *adr);
+int		ft_printf_hexdec_pointer(uintptr_t ptr);
 int		ft_dec_number(int n);
 int		ft_printf_count(char x, int *count);
 int		ft_printf_uns_int(unsigned int n);
-//int	ft_printf_hexdec_num_lower(va_arg(args, unsigned int i));
-//int	ft_printf_hexdec_num_upper(va_arg(args, unsigned int i));
+int		ft_printf_hexdec_num(unsigned int i, int flag);
+//char	*ft_itoa_hex(unsigned int i, int flag);
 
 #endif

@@ -6,29 +6,65 @@
 /*   By: lzabolot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 21:54:28 by lzabolot          #+#    #+#             */
-/*   Updated: 2025/02/26 23:11:04 by lzabolot         ###   ########.fr       */
+/*   Updated: 2025/02/28 21:38:01 by lzabolot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf_hexdec_pointer(void *ptr)
+int	ft_printf_hexdec_pointer(uintptr_t ptr)
 {
-    char	*result;
-    char	hex_digits[] = "0123456789abcdef";
-    int		i;
+	char	*hex_digits;
+	char	result[20];
+	int		i;
+	int		count;
+	int		temp;
 
-    result = (uintptr_t)ptr;
+	i = 0;
+	temp = 0;
+	hex_digits = "0123456789abcdef";
+	if (ptr == 0)
+		return (write(1, "0x0", 3));
+	count = write(1, "0x", 2);
+	while (ptr > 0)
+	{
+		result[i++] = hex_digits[ptr % 16];
+		ptr /= 16;
+	}
+	while (i-- > 0)
+	{
+		temp = write(1, &result[i], 1);
+		if (temp == -1)
+			return (-1);
+		count += temp;
+	}
+	return (count);
+}
 
-	result[0] = '0';
-	result[1] = 'x';
-    i = 2;
-    // Преобразуем адрес в шестнадцатеричную строку
-    while (address > 0)
-    {
-        result[i++] = hex_digits[address % 16];
-        address /= 16;
-    }
-    result[i] = '\0';
-    return (i);
+int	ft_printf_hexdec_num(unsigned int n, int flag)
+{
+	static char	*hex_digits_lower;
+	static char	*hex_digits_upper;
+	static char	result[9];
+	int			i;
+	int			count;
+
+	hex_digits_lower = "0123456789abcdef";
+	hex_digits_upper = "0123456789ABCDEF";
+	result[8] = '\0';
+	i = 0;
+	count = 0;
+	if (n == 0)
+		return (write(1, "0", 1));
+	while (n > 0)
+	{
+		if (flag == 0)
+			result[i++] = hex_digits_lower[n % 16];
+		else
+			result[i++] = hex_digits_upper[n % 16];
+		n /= 16;
+	}
+	while (i-- > 0)
+		count += write(1, &result[i], 1);
+	return (count);
 }

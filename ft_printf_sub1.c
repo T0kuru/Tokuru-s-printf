@@ -6,7 +6,7 @@
 /*   By: lzabolot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 21:27:11 by lzabolot          #+#    #+#             */
-/*   Updated: 2025/02/26 21:51:45 by lzabolot         ###   ########.fr       */
+/*   Updated: 2025/02/28 22:14:29 by lzabolot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	ft_printf_char(char x)
 {
-	write (1, &x, 1);
-	return (1);
+	return (write (1, &x, 1));
 }
 
 int	ft_printf_string(char *str)
@@ -24,20 +23,33 @@ int	ft_printf_string(char *str)
 
 	i = 0;
 	if (!str)
-		return(write(1, "(null)", 6));
+		return (write (1, "(null)", 6));
 	i = 0;
 	while (str[i])
-		write(1, &str[i++], 1);
+	{
+		if (ft_printf_char(str[i]) == -1)
+			return (-1);
+		i++;
+	}
 	return (i);
 }
 
 int	ft_printf_uns_int(unsigned int n)
 {
 	int	i;
-	
+	int temp;
+
 	i = 0;
 	if (n > 9)
-		i += ft_printf_uns_int(n / 10);
-	i += ft_printf_char('0' + n % 10);	
+	{
+		temp = ft_printf_uns_int(n / 10);
+		if (temp == -1)
+			return (-1);
+		i += temp;
+	}
+	temp = ft_printf_char('0' + n % 10);
+	if (temp == -1)
+		return(-1);
+	i += temp;
 	return (i);
 }

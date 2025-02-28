@@ -6,7 +6,7 @@
 /*   By: lzabolot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:29:08 by lzabolot          #+#    #+#             */
-/*   Updated: 2025/02/26 20:28:37 by lzabolot         ###   ########.fr       */
+/*   Updated: 2025/02/28 22:02:03 by lzabolot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	ft_dec_number(int n)
 
 	num = ft_itoa(n);
 	if (!num)
-		return (0);
+		return (-1);
 	count = ft_printf_string(num);
 	free(num);
 	return (count);

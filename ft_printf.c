@@ -6,7 +6,7 @@
 /*   By: lzabolot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:29:08 by lzabolot          #+#    #+#             */
-/*   Updated: 2025/02/26 21:54:46 by lzabolot         ###   ########.fr       */
+/*   Updated: 2025/02/28 21:58:53 by lzabolot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	ft_printf(const char *smth, ...)
 	va_list	args;
 	int		count;
 	int		i;
+	int		temp;
 
 	count = 0;
 	i = 0;
@@ -25,11 +26,17 @@ int	ft_printf(const char *smth, ...)
 	{
 		if (smth[i] == '%')
 		{
-			i++;
-			count += ft_parse_specificator(args, smth[i]);
+			temp = ft_parse_specificator(args, smth[++i]);
+			if (temp == -1)
+				return (-1);
+			count += temp;
 		}
 		else
-			count += ft_printf_char(smth[i]);
+		{
+			if (ft_printf_char(smth[i]) == -1)
+				return (-1);
+			count++;
+		}
 		i++;
 	}
 	va_end(args);
@@ -42,20 +49,20 @@ int	ft_parse_specificator(va_list args, char spec)
 
 	i = 0;
 	if (spec == '%')
-		i += ft_printf_char('%');
+		i = ft_printf_char('%');
 	else if (spec == 'c')
 		i += ft_printf_char(va_arg(args, int));
 	else if (spec == 's')
 		i += ft_printf_string(va_arg(args, char *));
 	else if (spec == 'p')
-		i += ft_printf_hexdec_pointer(va_arg(args, void *));
+		i += ft_printf_hexdec_pointer((uintptr_t)va_arg(args, void *));
 	else if (spec == 'd' || spec == 'i')
 		i += ft_dec_number(va_arg(args, int));
 	else if (spec == 'u')
 	i += ft_printf_uns_int(va_arg(args, unsigned int));
-//	else if (spec == 'x')
-//		i += ft_printf_hexdec_num_lower(va_arg(args, unsigned int));
-//	else if (spec == 'X')
-//		i += ft_printf_hexdec_num_upper(va_arg(args, unsigned int));
+	else if (spec == 'x')
+		i += ft_printf_hexdec_num(va_arg(args, unsigned int), 0);
+	else if (spec == 'X')
+		i += ft_printf_hexdec_num(va_arg(args, unsigned int), 1);
 	return (i);
 }
